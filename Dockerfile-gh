@@ -1,9 +1,10 @@
-FROM splunk/fluentd-hec:1.2.4
+FROM splunk/fluentd-hec:1.2.8
 
 COPY Gemfile .
 
 USER root
 RUN rm -rf gem/fluent-plugin-splunk-hec-1*
+RUN rm Gemfile.lock
 RUN rm /tmp/*gem
 RUN bundle install
 USER fluent
