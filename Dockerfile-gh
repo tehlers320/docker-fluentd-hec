@@ -2,4 +2,8 @@ FROM splunk/fluentd-hec:1.2.4
 
 COPY Gemfile .
 
-RUN gem install fluent-plugin-splunk-hec
+USER root
+RUN rm -rf gem/fluent-plugin-splunk-hec-1*
+RUN rm /tmp/*gem
+RUN bundle install
+USER fluent
